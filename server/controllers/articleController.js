@@ -43,7 +43,7 @@ class articleController {
         const { path } = req.file;
         articleData.file = {
           contentType: req.file.mimetype,
-          filename: path.slice(6),
+          filename: path.slice(13),
           path,
         };
       }

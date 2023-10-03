@@ -5,8 +5,11 @@ import Link from "next/link";
 import { FC } from "react";
 
 const Articles: FC = async (): Promise<JSX.Element> => {
+  console.log('TEST')
   const articles = await getAllArticles();
-  console.log('articles', articles)
+  console.log('articles', articles?.length)
+  console.log('TEST@')
+
   const cookieStore = cookies();
   const access = cookieStore.get("accessToken") as unknown as boolean;
 
