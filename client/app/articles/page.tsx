@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { IArticle } from "@/types/common";
 import Link from "next/link";
 import { FC } from "react";
+import GetAllArticles from "@/components/getAllArticles";
 
 const Articles: FC = async (): Promise<JSX.Element> => {
 
@@ -24,6 +25,8 @@ const Articles: FC = async (): Promise<JSX.Element> => {
           </button>
         )}
       </Link>
+
+      <GetAllArticles />
 
       <ul className="flex gap-3 flex-col mt-4">
         {articles?.map(({ title }: IArticle) => (
