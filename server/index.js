@@ -10,11 +10,11 @@ dotenv.config();
 mongoose.set("strictQuery", false);
 
 const app = express();
+// const corsOptions = {
+//   credentials: true, 
+//   origin: process.env.CLIENT_URL, 
+// };
 app.use(cors());
-// {
-//   credentials: true,
-//   origin: process.env.CLIENT_URL,
-// }
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api", router);

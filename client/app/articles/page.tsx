@@ -6,8 +6,10 @@ import { FC } from "react";
 
 const Articles: FC = async (): Promise<JSX.Element> => {
   const articles = await getAllArticles();
+  console.log('articles', articles)
   const cookieStore = cookies();
   const access = cookieStore.get("accessToken") as unknown as boolean;
+
   return (
     <>
       <h1 className="text-lg mt-10 mb-2 font-bold">All articles</h1>
