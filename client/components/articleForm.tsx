@@ -35,8 +35,9 @@ const ArticleForm: FC = () => {
         body: formData,
       });
       if (response.ok) {
-        router.push("/articles");
         router.refresh();
+        router.push("/articles");
+
       } else {
         console.error("Upload failed!");
       }

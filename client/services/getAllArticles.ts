@@ -9,6 +9,7 @@ export const getAllArticles = async (): Promise<IArticle[] | undefined> => {
       headers: {
         'Content-Type': 'application/json',
       },
+      cache: 'no-store',
     });
     if (!response.ok) {
       throw new Error('Network response was failed');
