@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import { IArticle } from "@/types/common";
 import Link from "next/link";
 import { FC } from "react";
-import GetAllArticles from "@/components/getAllArticles";
 
 async function getAllDropsDataNEW() {
   try {
@@ -55,9 +54,7 @@ const Articles: FC = async (): Promise<JSX.Element> => {
         )}
       </Link>
 
-      <GetAllArticles />
-
-      <ul className="flex gap-3 flex-col mt-4">
+      {/* <ul className="flex gap-3 flex-col mt-4">
         {articles?.map(({ title }: IArticle) => (
           <li key={title}>
             <Link
@@ -65,6 +62,19 @@ const Articles: FC = async (): Promise<JSX.Element> => {
               href={`/articles/${title}`}
             >
               {title}
+            </Link>
+          </li>
+        ))}
+      </ul> */}
+
+      <ul className="flex gap-3 flex-col mt-4">
+        {articles?.map(({ id }: any) => (
+          <li key={id}>
+            <Link
+              className="flex justify-center rounded-md px-2 py-2 text-sm font-semibold shadow-sm hover:bg-indigo-300 focus-visible:-outline-offset-8"
+              href={`/articles/${id}`}
+            >
+              {id}
             </Link>
           </li>
         ))}
