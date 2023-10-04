@@ -12,7 +12,6 @@ export default async function (req, res, next) {
       return next(ApiError.UnauthErr());
     }
     const userData = await tokenService.validateAccessToken(accessToken);
-    console.log("VALID", userData);
     if (!userData) {
       return next(ApiError.UnauthErr());
     }

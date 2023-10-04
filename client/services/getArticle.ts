@@ -1,20 +1,23 @@
 /** @format */
 
-import { IArticle } from "@/types/common";
+import { IArticle } from '@/types/common';
 
 export const getArticle = async (
-  article: string,
+  article: string
 ): Promise<IArticle | undefined> => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API}/articles/${article}`,
       {
-        method: "GET",
+        method: 'GET',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-      },
+      }
     );
+    if (!response.ok) {
+      throw new Error('Network response was failed');
+    }
     const data = await response.json();
     return data;
   } catch (error) {

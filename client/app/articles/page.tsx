@@ -7,7 +7,6 @@ import { FC } from "react";
 const Articles: FC = async (): Promise<JSX.Element> => {
 
   const articles = await getAllArticles();
-  console.log('AAA', articles?.length)
   const cookieStore = cookies();
   const access = cookieStore.get("accessToken") as unknown as boolean;
 
