@@ -5,12 +5,41 @@ import Link from "next/link";
 import { FC } from "react";
 import GetAllArticles from "@/components/getAllArticles";
 
+export async function getAllDropsDataNEW() {
+  try {
+    const endpoint1 = `https://strapi-production-909f.up.railway.app/api/drops?populate=*`;
+    const endpoint2 = `https://strapi-production-909f.up.railway.app/api/tags`;
+
+    const [response1, response2] = await Promise.all([
+      fetch(endpoint1, {
+        next: { revalidate: 3600 },
+      }),
+      fetch(endpoint2, { next: { revalidate: 3600 } }),
+    ]);
+
+    if (!response1.ok || !response2.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const { data: initDrops } = await response1.json();
+    const { data } = await response2.json();
+
+
+    return { initDrops, data };
+  } catch (error) {
+    console.log(error);
+    return { allDrops: [], activeDrops: [], endedDrops: [], tags: [] };
+  }
+}
+
 const Articles: FC = async (): Promise<JSX.Element> => {
 
   const articles = await getAllArticles();
   console.log('AAA', articles?.length)
   const cookieStore = cookies();
   const access = cookieStore.get("accessToken") as unknown as boolean;
+
+  const { initDrops, data } = await getAllDropsDataNEW()
 
   return (
     <>
@@ -40,6 +69,10 @@ const Articles: FC = async (): Promise<JSX.Element> => {
           </li>
         ))}
       </ul>
+
+      <p>DROPS{initDrops.length}</p>
+      <p>TAGS {data.length}</p>
+
     </>
   );
 };
