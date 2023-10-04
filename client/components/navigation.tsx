@@ -3,11 +3,9 @@ import Link from "next/link";
 import { deleteCookie } from "cookies-next";
 import { FC } from "react";
 import { useRouter } from "next/navigation";
+import { menu } from "@/consts/menu";
 
-const menu = [
-  { title: "Main", path: "/" },
-  { title: "Articles", path: "/articles" },
-];
+
 
 type Props = {
   access: boolean;
