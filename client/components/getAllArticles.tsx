@@ -20,7 +20,7 @@ const GetAllArticles = () => {
                 console.log(error);
             }
         })()
-    }, [])
+    }, [articles])
 
     console.log('EBANNIE articles', articles)
 

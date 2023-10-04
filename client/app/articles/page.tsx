@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FC } from "react";
 import GetAllArticles from "@/components/getAllArticles";
 
-export async function getAllDropsDataNEW() {
+async function getAllDropsDataNEW() {
   try {
     const endpoint1 = `https://strapi-production-909f.up.railway.app/api/drops?populate=*`;
     const endpoint2 = `https://strapi-production-909f.up.railway.app/api/tags`;
